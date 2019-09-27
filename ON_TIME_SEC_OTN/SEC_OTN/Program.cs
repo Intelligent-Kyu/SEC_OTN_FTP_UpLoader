@@ -30,7 +30,9 @@ namespace SET_OTN
             smtp.Attatchments.Add(file.FullName);
             smtp.Attatchments.Add(logfile.FullName);
             smtp.From = smtp.UserName;
+
             smtp.To.Add("jskwon@simmtech.com"); //권정수 팀장
+            smtp.To.Add("parkjh@simmtech.com"); //박진희 차장
             smtp.To.Add("soshin@simmtech.com");
             smtp.To.Add("jipark @simmtech.com");
             smtp.To.Add("chlee@simmtech.com");
