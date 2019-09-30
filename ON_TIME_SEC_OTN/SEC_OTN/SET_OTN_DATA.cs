@@ -8,7 +8,7 @@ namespace SET_OTN
 {
     public class SEC_OTN_DATA
     {
-        public string VendorCode { get { return "DY4W"; } }
+        public string VendorCode { get { return "A0ND"; } }  //A0ND //DY4W
         public string MaterialCode { get; set; }
         public string DiagramNo { get; set; }
         public string JobName { get; set; }

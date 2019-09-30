@@ -13,19 +13,25 @@ namespace SET_OTN
     {
         public static ExportFile ToFileWrite(this List<SEC_OTN_DATA> otn, string path)
         {
-            ExportFile file = ExportFile.GetFile("PCBINFOR_DY4W" + DateTime.Now.ToString("yyyyMMddHH"), "ff", path);
+            ExportFile file = ExportFile.GetFile("PCBINFOR_A0ND" + DateTime.Now.ToString("yyyyMMddHH"), "ff", path);
 
             List<string> fileheader = new List<string>()
             {
                     "Vendor_Code","Material_Code","Diagram_No","Lot_ID",
                     "AOI_Start_Time","AOI_End_Time",
-                    "AOI_In_Qty","AOI_Out_Qty","AOI_Total_Failure",
-                    "AOI_Open_Qty","AOI_Open_Failure",
-                    "AOI_Short_Qty","AOI_Short_Failure",
+                    "AOI_In_Qty","AOI_Out_Qty","AOI_YLD",
+                    "AOI_Open_Qty","AOI_Open_YLD",
+                    "AOI_Short_Qty","AOI_Short_YLD",
+                    //"AOI_In_Qty","AOI_Out_Qty","AOI_Total_Failure",
+                    //"AOI_Open_Qty","AOI_Open_Failure",
+                    //"AOI_Short_Qty","AOI_Short_Failure",
                     "BBT_Start_Time","BBT_End_Time",
-                    "BBT_In_Qty","BBT_Out_Qty","BBT_Total_Failure",
-                    "BBT_Open_Qty","BBT_Open_Failure",
-                    "BBT_Short_Qty","BBT_Short_Failure"
+                    "BBT_In_Qty","BBT_Out_Qty","BBT_YLD",
+                    "BBT_Open_Qty","BBT_Open_YLD",
+                    "BBT_Short_Qty","BBT_Short_YLD"
+                    //"BBT_In_Qty","BBT_Out_Qty","BBT_Total_Failure",
+                    //"BBT_Open_Qty","BBT_Open_Failure",
+                    //"BBT_Short_Qty","BBT_Short_Failure"
             };
 
             try

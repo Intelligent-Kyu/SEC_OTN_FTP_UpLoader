@@ -33,10 +33,10 @@ namespace SET_OTN
 
             smtp.To.Add("jskwon@simmtech.com"); //권정수 팀장
             smtp.To.Add("parkjh@simmtech.com"); //박진희 차장
-            smtp.To.Add("soshin@simmtech.com");
-            smtp.To.Add("jipark @simmtech.com");
-            smtp.To.Add("chlee@simmtech.com");
-            smtp.To.Add("lee.kh@simmtech.com");
+            smtp.CC.Add("soshin@simmtech.com");
+            smtp.CC.Add("jipark @simmtech.com");
+            smtp.CC.Add("chlee@simmtech.com");
+            smtp.CC.Add("lee.kh@simmtech.com");
             smtp.Subject = "[SEC OTN] - " + file.Name + " 첨부 건.";
             smtp.Body.Append("ATTACH SEC OTN DATA FILE AND LOG FILE.");
             smtp.Send();
