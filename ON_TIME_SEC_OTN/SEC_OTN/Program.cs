@@ -22,7 +22,7 @@ namespace SET_OTN
             var file = otn.getOnTimeData().ToFileWrite(path);   //ToFileWrite() path parameter input, defualt @"C:\ONT\yyyy-MM\ 
             otn.DBdisconnet();
 
-            FtpServer ftp = new FtpServer() { Host = "stftp.simmtech.com", UserName = "its_simm", Password = "its_simm0000", Path = "/OTN" };
+            FtpServer ftp = new FtpServer() { Host = "stftp.simmtech.com", UserName = "its_simm", Password = "its_simm0000", Path = "/ymsoy" };
             ftp.ProgressChanged += Ftp_ProgressChanged;
             ftp.Upload(file);
 
