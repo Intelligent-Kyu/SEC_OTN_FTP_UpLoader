@@ -22,16 +22,10 @@ namespace SET_OTN
                     "AOI_In_Qty","AOI_Out_Qty","AOI_YLD",
                     "AOI_Open_Qty","AOI_Open_YLD",
                     "AOI_Short_Qty","AOI_Short_YLD",
-                    //"AOI_In_Qty","AOI_Out_Qty","AOI_Total_Failure",
-                    //"AOI_Open_Qty","AOI_Open_Failure",
-                    //"AOI_Short_Qty","AOI_Short_Failure",
                     "BBT_Start_Time","BBT_End_Time",
                     "BBT_In_Qty","BBT_Out_Qty","BBT_YLD",
                     "BBT_Open_Qty","BBT_Open_YLD",
                     "BBT_Short_Qty","BBT_Short_YLD"
-                    //"BBT_In_Qty","BBT_Out_Qty","BBT_Total_Failure",
-                    //"BBT_Open_Qty","BBT_Open_Failure",
-                    //"BBT_Short_Qty","BBT_Short_Failure"
             };
 
             try
