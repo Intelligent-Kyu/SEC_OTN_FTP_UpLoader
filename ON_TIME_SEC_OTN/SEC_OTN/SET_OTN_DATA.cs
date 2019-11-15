@@ -81,6 +81,7 @@ namespace SET_OTN
         public decimal Yield
         {
             get { return 100 - (Math.Round(Convert.ToDecimal(OutputQty) /  Convert.ToDecimal(InputQty) * 100,3)); }
+
         }
     }
 }
