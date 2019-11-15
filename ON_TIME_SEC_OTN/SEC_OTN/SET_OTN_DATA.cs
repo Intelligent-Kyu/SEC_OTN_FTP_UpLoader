@@ -80,7 +80,7 @@ namespace SET_OTN
         public int OutputQty { get; set; }  //defect Qty, input Qty
         public decimal Yield
         {
-            get { return Math.Round(Convert.ToDecimal(OutputQty) /  Convert.ToDecimal(InputQty) * 100,3); }
+            get { return 100 - (Math.Round(Convert.ToDecimal(OutputQty) /  Convert.ToDecimal(InputQty) * 100,3)); }
         }
     }
 }
