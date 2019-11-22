@@ -30,7 +30,7 @@ namespace SET_OTN
                 sb.Append(DicDepts["AOI"].EndDateTime.ToString("yyyy-MM-dd-HH:mm") + separator);
                 sb.Append(DicDepts["AOI"].InputQty + separator);
                 sb.Append(DicDepts["AOI"].OutputQty + separator);
-                sb.Append(DicDepts["AOI"].Yield + separator);
+                sb.Append( 100 - DicDepts["AOI"].Yield + separator);
 
                 sb.Append(DicDepts["AOI"].DicDefects["OPEN"].OutputQty + separator);
                 sb.Append(DicDepts["AOI"].DicDefects["OPEN"].Yield + separator);
@@ -49,7 +49,7 @@ namespace SET_OTN
                 sb.Append(DicDepts["BBT"].EndDateTime.ToString("yyyy-MM-dd-HH:mm") + separator);
                 sb.Append(DicDepts["BBT"].InputQty + separator);
                 sb.Append(DicDepts["BBT"].OutputQty + separator);
-                sb.Append(DicDepts["BBT"].Yield + separator);
+                sb.Append(100 - DicDepts["BBT"].Yield + separator);
 
                 sb.Append(DicDepts["BBT"].DicDefects["OPEN"].OutputQty + separator);
                 sb.Append(DicDepts["BBT"].DicDefects["OPEN"].Yield + separator);
@@ -80,7 +80,7 @@ namespace SET_OTN
         public int OutputQty { get; set; }  //defect Qty, input Qty
         public decimal Yield
         {
-            get { return 100 - (Math.Round(Convert.ToDecimal(OutputQty) /  Convert.ToDecimal(InputQty) * 100,3)); }
+            get { return Math.Round(Convert.ToDecimal(OutputQty) /  Convert.ToDecimal(InputQty) * 100,3); }
         }
     }
 }
