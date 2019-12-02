@@ -19,7 +19,7 @@ namespace SET_OTN
         {
             SEC_OTN otn = new SEC_OTN();
             otn.DBConnect();
-            var file = otn.getOnTimeData().ToFileWrite(path);   //ToFileWrite() path parameter input, defualt @"C:\ONT\yyyy-MM\ 
+            var file = otn.getOnTimeData().ToFileWrite(path);   //ToFileWrite() path parameter input 
             otn.DBdisconnet();
 
             FtpServer ftp = new FtpServer() { Host = "stftp.simmtech.com", UserName = "its_simm", Password = "its_simm0000", Path = "/ymsoy" };
@@ -31,8 +31,10 @@ namespace SET_OTN
             smtp.Attatchments.Add(logfile.FullName);
             smtp.From = smtp.UserName;
 
-            smtp.To.Add("jskwon@simmtech.com"); //권정수 팀장
-            smtp.To.Add("parkjh@simmtech.com"); //박진희 차장
+            smtp.To.Add("jskwon@simmtech.com");   //권정수 팀장
+            smtp.To.Add("parkjh@simmtech.com");   //박진희 차장
+            smtp.To.Add("gyuholee@simmtech.com"); //이규호 주임
+            smtp.To.Add("hy.kim@simmtech.com");   //김화영 주임
             smtp.CC.Add("soshin@simmtech.com");
             smtp.CC.Add("jipark @simmtech.com");
             smtp.CC.Add("chlee@simmtech.com");
