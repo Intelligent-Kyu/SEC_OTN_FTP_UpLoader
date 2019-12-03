@@ -17,13 +17,12 @@ namespace SET_OTN
         static ExportFile logfile = ExportFile.GetFile(DateTime.Now.ToString("yy-MM-dd"), "txt", path + @"\LOG");
         static void Main(string[] args)
         {
-
             SEC_OTN otn = new SEC_OTN();
             otn.DBConnect();
             var file = otn.getOnTimeData().ToFileWrite(path);   //ToFileWrite() path parameter input 
             otn.DBdisconnet();
 
-            #region MyRegion
+            #region FTP UPLoad
             //string before_path = @"./" + DateTime.Now.AddDays(-1).ToString("yyyy-MM");
             //ExportFile before_file = ExportFile.GetFile("PCBINFOR_A0ND" + DateTime.Now.AddDays(-1).ToString("yyyyMMdd10"), "ff", before_path);
 
@@ -36,6 +35,7 @@ namespace SET_OTN
             ftp.Upload(file);
             #endregion
 
+            #region e-Mail Send
             SmtpServer smtp = new SmtpServer() { Host = "systemmail.simmtech.com", Port = 25, UserName = "ERPSystem@simmtech.com", Password = "" };
             smtp.Attatchments.Add(file.FullName);
             smtp.Attatchments.Add(logfile.FullName);
@@ -52,6 +52,8 @@ namespace SET_OTN
             smtp.Subject = "[SEC OTN] - " + file.Name + " 첨부 건.";
             smtp.Body.Append("ATTACH SEC OTN DATA FILE AND LOG FILE.");
             smtp.Send();
+            #endregion
+
         }
 
         private static void Ftp_ProgressChanged(object sender, ProgressEventArgs e)
