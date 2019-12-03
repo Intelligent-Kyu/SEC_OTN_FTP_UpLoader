@@ -17,14 +17,24 @@ namespace SET_OTN
         static ExportFile logfile = ExportFile.GetFile(DateTime.Now.ToString("yy-MM-dd"), "txt", path + @"\LOG");
         static void Main(string[] args)
         {
+
             SEC_OTN otn = new SEC_OTN();
             otn.DBConnect();
             var file = otn.getOnTimeData().ToFileWrite(path);   //ToFileWrite() path parameter input 
             otn.DBdisconnet();
 
+            #region MyRegion
+            //string before_path = @"./" + DateTime.Now.AddDays(-1).ToString("yyyy-MM");
+            //ExportFile before_file = ExportFile.GetFile("PCBINFOR_A0ND" + DateTime.Now.AddDays(-1).ToString("yyyyMMdd10"), "ff", before_path);
+
+            //FtpServer ftp = new FtpServer() { Host = "stftp.simmtech.com", UserName = "its_simm", Password = "its_simm0000", Path = "/ymsoy" };
+            //ftp.ProgressChanged += Ftp_ProgressChanged;
+            //ftp.Upload(before_file);
+
             FtpServer ftp = new FtpServer() { Host = "stftp.simmtech.com", UserName = "its_simm", Password = "its_simm0000", Path = "/ymsoy" };
             ftp.ProgressChanged += Ftp_ProgressChanged;
             ftp.Upload(file);
+            #endregion
 
             SmtpServer smtp = new SmtpServer() { Host = "systemmail.simmtech.com", Port = 25, UserName = "ERPSystem@simmtech.com", Password = "" };
             smtp.Attatchments.Add(file.FullName);
@@ -46,9 +56,6 @@ namespace SET_OTN
 
         private static void Ftp_ProgressChanged(object sender, ProgressEventArgs e)
         {
-            //ExportFile logfile = ExportFile.GetFile("SEC_OTN_Log", "txt", @"C:\Temp\LOG\");
-            //ConsoleLogWriter logwriter = new ConsoleLogWriter();
-
             TextFileLogWriter logwriter = new TextFileLogWriter(logfile.FullName);
             LogEventArgs logEventArgs = new LogEventArgs(EventLogEntryType.Information, e.ToString());  //defualt Information
             logEventArgs.Message += " ["+ ((ExportFile)sender).Name + "]";
