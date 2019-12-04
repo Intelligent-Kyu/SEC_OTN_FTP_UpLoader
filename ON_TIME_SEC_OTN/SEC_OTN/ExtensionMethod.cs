@@ -13,7 +13,7 @@ namespace SET_OTN
     {
         public static ExportFile ToFileWrite(this List<SEC_OTN_DATA> otn, string path)
         {
-            ExportFile file = ExportFile.GetFile("PCBINFOR_A0ND" + DateTime.Now.ToString("yyyyMMddHH"), "ff", path);
+            ExportFile file = ExportFile.GetFile("PCBINFOR_A0ND" + DateTime.Now.AddDays(1).ToString("yyyyMMddHH"), "ff", path);
 
             List<string> fileheader = new List<string>()
             {

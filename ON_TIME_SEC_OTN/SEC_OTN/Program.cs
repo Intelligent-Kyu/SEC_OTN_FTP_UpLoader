@@ -13,8 +13,9 @@ namespace SET_OTN
 {
     class Program
     {
-        static string path =  @"./" + DateTime.Now.ToString("yyyy-MM");
-        static ExportFile logfile = ExportFile.GetFile(DateTime.Now.ToString("yy-MM-dd"), "txt", path + @"\LOG");
+        static string path =  @"./" + DateTime.Now.AddDays(1).ToString("yyyy-MM");
+        static string previousPath = @"./" + DateTime.Now.ToString("yyyy-MM");
+        static ExportFile logfile = ExportFile.GetFile(DateTime.Now.ToString("yy-MM-dd"), "txt", previousPath + @"\LOG");
         static void Main(string[] args)
         {
             SEC_OTN otn = new SEC_OTN();
@@ -23,16 +24,15 @@ namespace SET_OTN
             otn.DBdisconnet();
 
             #region FTP UPLoad
-            //string before_path = @"./" + DateTime.Now.AddDays(-1).ToString("yyyy-MM");
-            //ExportFile before_file = ExportFile.GetFile("PCBINFOR_A0ND" + DateTime.Now.AddDays(-1).ToString("yyyyMMdd10"), "ff", before_path);
-
-            //FtpServer ftp = new FtpServer() { Host = "stftp.simmtech.com", UserName = "its_simm", Password = "its_simm0000", Path = "/ymsoy" };
-            //ftp.ProgressChanged += Ftp_ProgressChanged;
-            //ftp.Upload(before_file);
+            ExportFile previousFile = ExportFile.GetFile("PCBINFOR_A0ND" + DateTime.Now.ToString("yyyyMMddHH"), "ff", previousPath);
 
             FtpServer ftp = new FtpServer() { Host = "stftp.simmtech.com", UserName = "its_simm", Password = "its_simm0000", Path = "/ymsoy" };
             ftp.ProgressChanged += Ftp_ProgressChanged;
-            ftp.Upload(file);
+            ftp.Upload(previousFile);
+
+            //FtpServer ftp = new FtpServer() { Host = "stftp.simmtech.com", UserName = "its_simm", Password = "its_simm0000", Path = "/ymsoy" };
+            //ftp.ProgressChanged += Ftp_ProgressChanged;
+            //ftp.Upload(file);
             #endregion
 
             #region e-Mail Send
@@ -48,7 +48,8 @@ namespace SET_OTN
             smtp.CC.Add("soshin@simmtech.com");
             smtp.CC.Add("jipark @simmtech.com");
             smtp.CC.Add("chlee@simmtech.com");
-            smtp.CC.Add("lee.kh@simmtech.com");
+            smtp.CC.Add("hdjang@simmtech.com");
+            //smtp.To.Add("lee.kh@simmtech.com");
             smtp.Subject = "[SEC OTN] - " + file.Name + " 첨부 건.";
             smtp.Body.Append("ATTACH SEC OTN DATA FILE AND LOG FILE.");
             smtp.Send();
